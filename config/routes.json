@@ -1,0 +1,19 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/",
+      "handler": "AuthFirebase.index",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/verify",
+      "handler": "AuthFirebase.verify",
+      "config": {
+      }
+    }
+  ]
+}
