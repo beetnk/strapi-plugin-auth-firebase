@@ -29,9 +29,9 @@ module.exports = {
 
   verify: async (ctx) => {
 
-    ctx.send({
-      message: 'verify'
-    });
+    // ctx.send({
+    //   message: 'verify'
+    // });
 
     if (firebase.apps.length === 0) {
       firebase.initializeApp(strapi.config.firebase);
@@ -94,8 +94,8 @@ module.exports = {
         meta: {}
       }
 
-      // console.log(decoded.firebase);
-      // console.log(decoded.firebase.identities);
+      console.log(decoded.firebase);
+      console.log(decoded.firebase.identities);
       // return ctx.send({});
 
       if (values.password) {

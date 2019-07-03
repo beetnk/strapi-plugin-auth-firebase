@@ -5,7 +5,8 @@
       "path": "/",
       "handler": "AuthFirebase.index",
       "config": {
-        "policies": []
+        "policies": [
+        ]
       }
     },
     {
