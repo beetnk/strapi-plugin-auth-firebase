@@ -15,6 +15,20 @@
       "handler": "AuthFirebase.verify",
       "config": {
       }
+    },
+    {
+      "method": "GET",
+      "path": "/me",
+      "handler": "AuthFirebase.me",
+      "config": {
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/me/:id",
+      "handler": "AuthFirebase.update",
+      "config": {
+      }
     }
   ]
 }
