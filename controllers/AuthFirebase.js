@@ -82,7 +82,7 @@ module.exports = {
     const decoded = await verifyIdToken(token) || { email: null };
     const user = decoded.email ?
       await strapi.plugins['users-permissions'].models.user
-        .findOne({ email: decoded.email }, ['role'])
+        .findOne({ email: decoded.email }, ['role', 'meta'])
       : null;
 
     // console.log(decoded);
@@ -121,7 +121,7 @@ module.exports = {
       }
 
       user = await strapi.plugins['users-permissions'].models.user
-        .findOne({ email: decoded.email }, ['role']);
+        .findOne({ email: decoded.email }, ['role', 'meta']);
     }
 
     if (!user) {
