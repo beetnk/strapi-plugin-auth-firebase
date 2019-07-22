@@ -80,7 +80,7 @@ module.exports = {
     }
 
     const decoded = await verifyIdToken(token) || { email: null };
-    const user = decoded.email ?
+    let user = decoded.email ?
       await strapi.plugins['users-permissions'].models.user
         .findOne({ email: decoded.email }, ['role', 'meta'])
       : null;
@@ -100,8 +100,8 @@ module.exports = {
         meta: {}
       }
 
-      console.log(decoded.firebase);
-      console.log(decoded.firebase.identities);
+      // console.log(decoded.firebase);
+      // console.log(decoded.firebase.identities);
       // return ctx.send({});
 
       if (values.password) {
@@ -115,7 +115,7 @@ module.exports = {
 
       // Use Content Manager business logic to handle relation.
       if (strapi.plugins['content-manager']) {
-        return await strapi.plugins['content-manager'].services['contentmanager'].add({
+        await strapi.plugins['content-manager'].services['contentmanager'].add({
           model: 'user'
         }, values, 'users-permissions');
       }
@@ -153,6 +153,10 @@ module.exports = {
     await strapi.plugins['users-permissions'].models.user.updateOne({
         id: user.id
       }, user);
+
+    console.log('--------------------');
+    console.log(user);
+    console.log('<<<');
 
     ctx.send({
         jwt: strapi.plugins['users-permissions'].services.jwt.issue(_.pick(user, ['_id', 'id'])),
